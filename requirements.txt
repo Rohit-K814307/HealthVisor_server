@@ -1,0 +1,14 @@
+flask
+flask-cors
+gunicorn
+tensorflow
+tensorflow-text
+numpy
+pandas
+scikit-learn
+bert-tensorflow
+nltk
+tensorflow-hub
+firebase
+firebase-admin
+matplotlib

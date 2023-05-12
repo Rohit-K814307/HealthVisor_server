@@ -2,6 +2,11 @@ from flask import Flask
 from api_funcs import query_db
 from flask_cors import CORS
 from flask import Flask, jsonify
+
+
+
+
+
 from api_funcs.condition_predict import load_model,encoded_mapping_func,make_pred
 from api_funcs.doctor_finder.func_doctor_finder import query_data
 
@@ -55,9 +60,3 @@ def findDoctor(city:str,state:str):
     stateVal = state[0:-1] + state[-1].lower()
 
     return jsonify(query_data(city, stateVal))
-
-
-################################################################################
-
-if __name__ == "__main__":
-    app.run(host='0.0.0.0',debug=True,port='9999',use_reloader=False)
