@@ -20,6 +20,22 @@ from official.nlp import optimization
 import os
 from nltk.tokenize import word_tokenize
 import re
+import firebase_admin
+from firebase_admin import db
+import json
+
+
+def basic_response():
+    cred_obj = firebase_admin.credentials.Certificate('adminSDK.json')
+    default_app = firebase_admin.initialize_app(cred_obj, {
+        'databaseURL':"https://healthvisor-60926-default-rtdb.firebaseio.com/"
+        })
+
+    ref = db.reference("/")
+
+    #sample query
+    return json.loads(ref.order_by_child("steps").get())
+    
 
 def model(metrics):
 
@@ -321,7 +337,7 @@ def modelpredict(text:str):
 @app.route("/condition-steps/<string:inputVal>")
 def conditionSteps(inputVal:str):
 
-    datavals = query_db.basic_response()
+    datavals = basic_response()
     symptomSteps = datavals.get("steps")
     return jsonify({"steps":symptomSteps.get(inputVal)})
 
@@ -330,7 +346,7 @@ def conditionSteps(inputVal:str):
 #query for the descriptions dataset
 @app.route('/description-data/<string:condition>')
 def descriptionData(condition:str):
-    datavals = query_db.basic_response()
+    datavals = basic_response()
     descriptions = datavals.get("descriptions")
 
     return jsonify({"description":descriptions.get(condition)})
