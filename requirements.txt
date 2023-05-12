@@ -4,12 +4,9 @@ gunicorn
 tensorflow
 tensorflow-text
 numpy
-pandas
 tf-models-official
-scikit-learn
 bert-tensorflow
 nltk
 tensorflow-hub
 firebase
 firebase-admin
-matplotlib
