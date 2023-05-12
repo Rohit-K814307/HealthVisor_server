@@ -15,8 +15,6 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from official.nlp import optimization
-import os
 from nltk.tokenize import word_tokenize
 import re
 import firebase_admin
@@ -55,9 +53,9 @@ def model(metrics):
     net = tf.keras.layers.Dense(32, activation='relu')(clf_output)
     net = tf.keras.layers.Dropout(0.2)(net)
     out = tf.keras.layers.Dense(41, activation='softmax')(net)
-    
+
     model = tf.keras.models.Model(inputs=text_input, outputs=out)
-    model.compile(tf.keras.optimizers.Adam(lr=1e-5), loss='categorical_crossentropy', metrics=metrics)
+    model.compile(tf.keras.optimizers.legacy.Adam(lr=1e-5), loss='categorical_crossentropy', metrics=metrics)
     
     return model
 
