@@ -1,5 +1,4 @@
 from flask import Flask
-from api_funcs import query_db
 from flask_cors import CORS
 from flask import Flask, jsonify
 import requests
