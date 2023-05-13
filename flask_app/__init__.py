@@ -6,9 +6,17 @@ import tensorflow_text as text
 from bert import tokenization
 from tensorflow import keras
 import numpy as np
+import pandas as pd
 import tensorflow as tf
 tf.gfile = tf.io.gfile
 import tensorflow_hub as hub
+from sklearn.utils import resample
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+from official.nlp import optimization
+import os
 from nltk.tokenize import word_tokenize
 import re
 import firebase_admin
