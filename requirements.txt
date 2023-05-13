@@ -1,6 +1,5 @@
 flask
 flask-cors
-gunicorn
 tensorflow
 tensorflow-text
 numpy
